@@ -1,1 +1,1614 @@
-hi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSS Travels and Tours | UK & Sri Lanka Tours | Cricket Coaching</title>
+    <meta name="description" content="Premium travel and tour services between UK and Sri Lanka. Specializing in tourism packages and professional cricket coaching facilities.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4d2e;
+            --primary-light: #2d7a4f;
+            --accent: #d4af37;
+            --accent-hover: #c19b2a;
+            --dark: #0f1419;
+            --light: #f8f6f1;
+            --cream: #faf8f3;
+            --text: #2c3e50;
+            --text-light: #5d6d7e;
+            --white: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --shadow-heavy: rgba(0, 0, 0, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background: var(--cream);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 20px var(--shadow);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 30px var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            font-family: 'Playfair Display', serif;
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        .logo-main {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            line-height: 1;
+        }
+
+        .logo-sub {
+            font-size: 0.75rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-top: 0.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-menu-btn span {
+            width: 28px;
+            height: 3px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0f1419 0%, #1a4d2e 100%);
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(135deg, rgba(15, 20, 25, 0.85) 0%, rgba(26, 77, 46, 0.7) 100%),
+                url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            animation: gradientShift 20s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 1200px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            color: var(--accent);
+            font-size: 1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--dark);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 50px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 2;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 5rem;
+        }
+
+        .section-subtitle {
+            color: var(--accent);
+            font-size: 0.95rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Services Section */
+        #services {
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--cream);
+            padding: 3rem;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(26, 77, 46, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px var(--shadow);
+            border-color: var(--accent);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: rotate(10deg) scale(1.1);
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Destinations Section */
+        #destinations {
+            background: linear-gradient(135deg, #f8f6f1 0%, #ffffff 100%);
+        }
+
+        .destinations-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .destinations-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 1rem 2.5rem;
+            background: transparent;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .tab-button:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .tab-button.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--dark);
+        }
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .destination-card {
+            position: relative;
+            height: 450px;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .destination-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.8) 100%);
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+
+        .destination-card:hover::before {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.9) 100%);
+        }
+
+        .destination-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .destination-card:hover .destination-image {
+            transform: scale(1.1);
+        }
+
+        .destination-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2.5rem;
+            z-index: 2;
+            transform: translateY(0);
+            transition: all 0.4s ease;
+        }
+
+        .destination-card:hover .destination-content {
+            transform: translateY(-10px);
+        }
+
+        .destination-card h3 {
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .destination-card p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        /* Cricket Coaching Section */
+        #cricket-coaching {
+            background: var(--white);
+        }
+
+        .cricket-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .cricket-image-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 600px;
+        }
+
+        .cricket-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cricket-badge {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .cricket-info h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .cricket-info p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 2rem;
+        }
+
+        .cricket-features {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .cricket-feature {
+            display: flex;
+            align-items: start;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--cream);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .cricket-feature:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px var(--shadow);
+        }
+
+        .cricket-feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .cricket-feature h4 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .cricket-feature p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* About Section */
+        #about {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-container .section-subtitle {
+            color: var(--accent);
+        }
+
+        .about-container .section-title {
+            color: var(--white);
+        }
+
+        .about-container .section-description {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 1px;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: var(--cream);
+        }
+
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .contact-info p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 3rem;
+        }
+
+        .contact-details {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item h4 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p, .contact-item a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(26, 77, 46, 0.2);
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--cream);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: var(--white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--accent);
+            color: var(--dark);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Animations on Scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1200px) {
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .section-title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 300px;
+                background: var(--white);
+                flex-direction: column;
+                padding: 6rem 2rem 2rem;
+                box-shadow: -5px 0 20px var(--shadow);
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-description {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .services-grid,
+            .destinations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cricket-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            section {
+                padding: 5rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.85rem;
+                letter-spacing: 2px;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .service-card,
+            .contact-form {
+                padding: 2rem;
+            }
+
+            .destinations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .destination-card {
+                height: 400px;
+            }
+
+            .cricket-image-container {
+                height: 400px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 3rem;
+            }
+        }
+
+        /* Loading Animation */
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .loading {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-main">MSS</span>
+                <span class="logo-sub">TRAVELS & TOURS</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#cricket-coaching">Cricket Coaching</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact" class="cta-button">Contact Us</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <div class="hero-subtitle">Experience The World</div>
+            <h1>Journey Between<br>UK & Sri Lanka</h1>
+            <p class="hero-description">Discover breathtaking destinations, immerse yourself in rich cultures, and elevate your cricket skills with world-class coaching facilities in the paradise island of Sri Lanka.</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn-primary">Explore Tours</a>
+                <a href="#cricket-coaching" class="btn-secondary">Cricket Coaching</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 30 50">
+                <rect x="5" y="5" width="20" height="35" rx="10" />
+                <circle cx="15" cy="15" r="3" fill="currentColor">
+                    <animate attributeName="cy" from="15" to="30" dur="1.5s" repeatCount="indefinite" />
+                </circle>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-header">
+            <div class="section-subtitle">What We Offer</div>
+            <h2 class="section-title">Our Premium Services</h2>
+            <p class="section-description">Tailored travel experiences and professional cricket coaching designed to create unforgettable memories and enhance your skills.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">🌍</div>
+                <h3>UK Tours</h3>
+                <p>Experience the rich history and vibrant culture of the United Kingdom with our expertly curated tour packages.</p>
+                <ul class="service-features">
+                    <li>Historic landmarks and attractions</li>
+                    <li>Cultural immersion experiences</li>
+                    <li>Customizable itineraries</li>
+                    <li>Professional tour guides</li>
+                    <li>Comfortable accommodation</li>
+                </ul>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">🏝️</div>
+                <h3>Sri Lanka Tours</h3>
+                <p>Explore the breathtaking beauty of Sri Lanka, from pristine beaches to ancient temples and lush tea plantations.</p>
+                <ul class="service-features">
+                    <li>Beach paradise getaways</li>
+                    <li>Wildlife safari adventures</li>
+                    <li>Cultural heritage tours</li>
+                    <li>Tea plantation visits</li>
+                    <li>Authentic local experiences</li>
+                </ul>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">🏏</div>
+                <h3>Cricket Coaching</h3>
+                <p>World-class cricket coaching facilities in Sri Lanka with professional coaches and state-of-the-art training grounds.</p>
+                <ul class="service-features">
+                    <li>Professional coaching staff</li>
+                    <li>Modern training facilities</li>
+                    <li>Individual and team programs</li>
+                    <li>Match practice opportunities</li>
+                    <li>Video analysis sessions</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section id="destinations">
+        <div class="section-header">
+            <div class="section-subtitle">Popular Destinations</div>
+            <h2 class="section-title">Where Will You Go?</h2>
+            <p class="section-description">From the historic streets of London to the tropical paradise of Sri Lanka, explore our handpicked destinations.</p>
+        </div>
+        <div class="destinations-container">
+            <div class="destinations-tabs">
+                <button class="tab-button active" data-tab="uk">United Kingdom</button>
+                <button class="tab-button" data-tab="srilanka">Sri Lanka</button>
+            </div>
+            <div class="destinations-grid" id="uk-destinations">
+                <div class="destination-card fade-in">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23c41e3a;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%23bc002d;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g1)'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='60' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3ELondon%3C/text%3E%3C/svg%3E" alt="London" class="destination-image">
+                    <div class="destination-content">
+                        <h3>London</h3>
+                        <p>Explore iconic landmarks including Big Ben, Tower Bridge, and Buckingham Palace in England's vibrant capital city.</p>
+                    </div>
+                </div>
+                <div class="destination-card fade-in">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234a90e2;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%23357abd;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g2)'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='60' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3EEdinburgh%3C/text%3E%3C/svg%3E" alt="Edinburgh" class="destination-image">
+                    <div class="destination-content">
+                        <h3>Edinburgh</h3>
+                        <p>Discover Scotland's historic capital with its medieval Old Town and elegant Georgian New Town.</p>
+                    </div>
+                </div>
+                <div class="destination-card fade-in">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2350c878;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%233d9e5f;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g3)'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='60' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3EOxford%3C/text%3E%3C/svg%3E" alt="Oxford" class="destination-image">
+                    <div class="destination-content">
+                        <h3>Oxford</h3>
+                        <p>Visit the historic university city known for its stunning architecture and world-renowned colleges.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cricket Coaching Section -->
+    <section id="cricket-coaching">
+        <div class="section-header">
+            <div class="section-subtitle">Professional Training</div>
+            <h2 class="section-title">World-Class Cricket Coaching</h2>
+            <p class="section-description">Train like a champion in Sri Lanka's premier cricket coaching facilities with experienced coaches and modern infrastructure.</p>
+        </div>
+        <div class="cricket-content">
+            <div class="cricket-image-container fade-in">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g4' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%231a4d2e;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%232d7a4f;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g4)'/%3E%3Ctext x='50%25' y='45%25' font-family='Arial' font-size='80' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3E🏏%3C/text%3E%3Ctext x='50%25' y='60%25' font-family='Arial' font-size='40' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3ECricket Coaching%3C/text%3E%3C/svg%3E" alt="Cricket Coaching">
+                <div class="cricket-badge">Premium Facilities</div>
+            </div>
+            <div class="cricket-info fade-in">
+                <h3>Elevate Your Cricket Skills in Paradise</h3>
+                <p>Our cricket coaching program in Sri Lanka offers an unparalleled training experience. Combining professional coaching expertise with world-class facilities, we provide the perfect environment for players of all levels to improve their game.</p>
+                <p>Train on pristine grounds under the guidance of experienced coaches who have worked with international players. Our comprehensive programs cover all aspects of the game, from technical skills to match strategy and mental preparation.</p>
+                <div class="cricket-features">
+                    <div class="cricket-feature">
+                        <div class="cricket-feature-icon">👨‍🏫</div>
+                        <div>
+                            <h4>Expert Coaching Staff</h4>
+                            <p>Learn from certified coaches with international experience and proven track records.</p>
+                        </div>
+                    </div>
+                    <div class="cricket-feature">
+                        <div class="cricket-feature-icon">🏟️</div>
+                        <div>
+                            <h4>State-of-the-Art Facilities</h4>
+                            <p>Train on professional-grade pitches with modern equipment and training aids.</p>
+                        </div>
+                    </div>
+                    <div class="cricket-feature">
+                        <div class="cricket-feature-icon">📊</div>
+                        <div>
+                            <h4>Performance Analysis</h4>
+                            <p>Benefit from video analysis and data-driven insights to refine your technique.</p>
+                        </div>
+                    </div>
+                    <div class="cricket-feature">
+                        <div class="cricket-feature-icon">🏆</div>
+                        <div>
+                            <h4>Competitive Matches</h4>
+                            <p>Apply your skills in practice matches and tournaments against local teams.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="about-container">
+            <div class="section-header">
+                <div class="section-subtitle">About MSS Travels</div>
+                <h2 class="section-title">Creating Memorable Experiences</h2>
+                <p class="section-description">With years of expertise in the travel and tourism industry, MSS Travels and Tours is committed to delivering exceptional experiences that exceed expectations. From breathtaking tours to professional cricket coaching, we bring your travel dreams to life.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item fade-in">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-label">Happy Travelers</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Tour Packages</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Satisfaction Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header">
+            <div class="section-subtitle">Get In Touch</div>
+            <h2 class="section-title">Start Your Journey Today</h2>
+            <p class="section-description">Ready to embark on an unforgettable adventure? Contact us and let's plan your perfect tour or cricket coaching program.</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info fade-in">
+                <h3>Contact Information</h3>
+                <p>Reach out to us through any of the following channels. We're here to answer your questions and help plan your ideal travel experience.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">👤</div>
+                        <div>
+                            <h4>Managing Director</h4>
+                            <p>Maduranga Zoysa</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h4>Phone Numbers</h4>
+                            <p>Sri Lanka: <a href="tel:+94775191817">+94 77 519 1817</a></p>
+                            <p>United Kingdom: <a href="tel:+447310192460">+44 7310 192460</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <h4>Email</h4>
+                            <p><a href="mailto:maduranga.soyza@gmail.com">maduranga.soyza@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Colombo, Sri Lanka</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form fade-in">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="interest">I'm Interested In *</label>
+                        <select id="interest" name="interest" required>
+                            <option value="">Select an option</option>
+                            <option value="uk-tour">UK Tour Package</option>
+                            <option value="srilanka-tour">Sri Lanka Tour Package</option>
+                            <option value="cricket-coaching">Cricket Coaching</option>
+                            <option value="custom">Custom Package</option>
+                            <option value="other">Other Inquiry</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>MSS Travels & Tours</h3>
+                <p>Your trusted partner for unforgettable travel experiences between the UK and Sri Lanka, plus world-class cricket coaching facilities.</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook">📘</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="Twitter">🐦</a>
+                    <a href="#" title="LinkedIn">💼</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="#about">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#services">UK Tours</a></li>
+                    <li><a href="#services">Sri Lanka Tours</a></li>
+                    <li><a href="#cricket-coaching">Cricket Coaching</a></li>
+                    <li><a href="#contact">Custom Packages</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li>Colombo, Sri Lanka</li>
+                    <li><a href="tel:+94775191817">+94 77 519 1817</a></li>
+                    <li><a href="tel:+447310192460">+44 7310 192460</a></li>
+                    <li><a href="mailto:maduranga.soyza@gmail.com">maduranga.soyza@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MSS Travels and Tours. All rights reserved. | Designed with excellence for unforgettable journeys.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Destination tabs
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const destinationsGrid = document.querySelector('.destinations-grid');
+
+        const ukDestinations = `
+            <div class="destination-card fade-in">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23c41e3a;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%23bc002d;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g1)'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='60' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3ELondon%3C/text%3E%3C/svg%3E" alt="London" class="destination-image">
+                <div class="destination-content">
+                    <h3>London</h3>
+                    <p>Explore iconic landmarks including Big Ben, Tower Bridge, and Buckingham Palace in England's vibrant capital city.</p>
+                </div>
+            </div>
+            <div class="destination-card fade-in">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234a90e2;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%23357abd;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g2)'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='60' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3EEdinburgh%3C/text%3E%3C/svg%3E" alt="Edinburgh" class="destination-image">
+                <div class="destination-content">
+                    <h3>Edinburgh</h3>
+                    <p>Discover Scotland's historic capital with its medieval Old Town and elegant Georgian New Town.</p>
+                </div>
+            </div>
+            <div class="destination-card fade-in">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2350c878;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%233d9e5f;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g3)'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='60' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3EOxford%3C/text%3E%3C/svg%3E" alt="Oxford" class="destination-image">
+                <div class="destination-content">
+                    <h3>Oxford</h3>
+                    <p>Visit the historic university city known for its stunning architecture and world-renowned colleges.</p>
+                </div>
+            </div>
+        `;
+
+        const sriLankaDestinations = `
+            <div class="destination-card fade-in">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g5' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2300bcd4;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%230097a7;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g5)'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='60' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3EColombo%3C/text%3E%3C/svg%3E" alt="Colombo" class="destination-image">
+                <div class="destination-content">
+                    <h3>Colombo</h3>
+                    <p>Experience the bustling capital city with its blend of modern architecture and colonial charm.</p>
+                </div>
+            </div>
+            <div class="destination-card fade-in">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g6' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234caf50;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%23388e3c;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g6)'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='60' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3EKandy%3C/text%3E%3C/svg%3E" alt="Kandy" class="destination-image">
+                <div class="destination-content">
+                    <h3>Kandy</h3>
+                    <p>Visit the sacred city home to the Temple of the Tooth and surrounded by lush green mountains.</p>
+                </div>
+            </div>
+            <div class="destination-card fade-in">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g7' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23ff9800;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%23f57c00;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g7)'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='60' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3EGalle%3C/text%3E%3C/svg%3E" alt="Galle" class="destination-image">
+                <div class="destination-content">
+                    <h3>Galle</h3>
+                    <p>Explore the historic Dutch fort and pristine beaches along Sri Lanka's southern coast.</p>
+                </div>
+            </div>
+        `;
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                const tab = button.getAttribute('data-tab');
+                if (tab === 'uk') {
+                    destinationsGrid.innerHTML = ukDestinations;
+                } else {
+                    destinationsGrid.innerHTML = sriLankaDestinations;
+                }
+
+                // Re-observe new elements
+                document.querySelectorAll('.fade-in').forEach(element => {
+                    observer.observe(element);
+                });
+            });
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission
+            alert('Thank you for your inquiry! We will get back to you shortly.');
+            contactForm.reset();
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroBackground = document.querySelector('.hero-background');
+            if (heroBackground) {
+                heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add cursor trail effect (optional enhancement)
+        document.addEventListener('mousemove', (e) => {
+            const trail = document.createElement('div');
+            trail.style.position = 'fixed';
+            trail.style.width = '5px';
+            trail.style.height = '5px';
+            trail.style.borderRadius = '50%';
+            trail.style.background = 'rgba(212, 175, 55, 0.3)';
+            trail.style.left = e.clientX + 'px';
+            trail.style.top = e.clientY + 'px';
+            trail.style.pointerEvents = 'none';
+            trail.style.zIndex = '9999';
+            
+            document.body.appendChild(trail);
+            
+            setTimeout(() => {
+                trail.style.transition = 'all 0.5s ease';
+                trail.style.opacity = '0';
+                trail.style.transform = 'scale(0)';
+                setTimeout(() => trail.remove(), 500);
+            }, 10);
+        });
+    </script>
+</body>
+</html>
