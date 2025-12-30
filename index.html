@@ -22,6 +22,58 @@
             --white: #ffffff;
             --shadow: rgba(0, 0, 0, 0.1);
             --shadow-heavy: rgba(0, 0, 0, 0.25);
+            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        /* Preloader Styles */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 2rem;
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        .preloader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(212, 175, 55, 0.2);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+            50% { text-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
         }
 
         * {
@@ -204,6 +256,53 @@
             animation: gradientShift 20s ease infinite;
         }
 
+        /* Floating particles effect */
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 12s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 14s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; animation-duration: 16s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 1s; animation-duration: 13s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 3s; animation-duration: 15s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; animation-duration: 11s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 2.5s; animation-duration: 17s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 1.5s; animation-duration: 14s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 4.5s; animation-duration: 12s; }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+
         @keyframes gradientShift {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.9; }
@@ -378,7 +477,7 @@
             background: var(--cream);
             padding: 3rem;
             border-radius: 20px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s var(--transition-smooth);
             border: 1px solid rgba(26, 77, 46, 0.1);
             position: relative;
             overflow: hidden;
@@ -393,11 +492,29 @@
             height: 4px;
             background: linear-gradient(90deg, var(--accent), var(--primary));
             transform: scaleX(0);
-            transition: transform 0.4s ease;
+            transform-origin: left;
+            transition: transform 0.4s var(--transition-smooth);
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
         }
 
         .service-card:hover::before {
             transform: scaleX(1);
+        }
+
+        .service-card:hover::after {
+            opacity: 1;
         }
 
         .service-card:hover {
@@ -409,19 +526,34 @@
         .service-icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            background: var(--gradient-primary);
             border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 2rem;
             font-size: 2rem;
-            transition: all 0.4s ease;
+            transition: all 0.4s var(--transition-bounce);
+            position: relative;
         }
 
         .service-card:hover .service-icon {
             transform: rotate(10deg) scale(1.1);
-            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            background: var(--gradient-accent);
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-features li:hover {
+            transform: translateX(5px);
+            color: var(--primary);
         }
 
         .service-card h3 {
@@ -483,13 +615,33 @@
             font-weight: 600;
             font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s var(--transition-smooth);
             font-family: 'Montserrat', sans-serif;
             letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: var(--primary);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+            z-index: -1;
+        }
+
+        .tab-button:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .tab-button:hover {
-            background: var(--primary);
             color: var(--white);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px var(--shadow);
@@ -499,6 +651,10 @@
             background: var(--accent);
             border-color: var(--accent);
             color: var(--dark);
+        }
+
+        .tab-button.active::before {
+            display: none;
         }
 
         .destinations-grid {
@@ -801,6 +957,7 @@
 
         .form-group {
             margin-bottom: 2rem;
+            position: relative;
         }
 
         .form-group label {
@@ -809,6 +966,7 @@
             color: var(--primary);
             font-weight: 600;
             font-size: 0.95rem;
+            transition: all 0.3s ease;
         }
 
         .form-group input,
@@ -830,11 +988,50 @@
             outline: none;
             border-color: var(--accent);
             background: var(--white);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-group input:valid:not(:placeholder-shown),
+        .form-group textarea:valid:not(:placeholder-shown),
+        .form-group select:valid {
+            border-color: var(--primary);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-light);
+            opacity: 0.6;
         }
 
         .form-group textarea {
             resize: vertical;
             min-height: 150px;
+        }
+
+        /* Form success/error states */
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        .form-success-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-success h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-success p {
+            color: var(--text-light);
         }
 
         .submit-btn {
@@ -847,9 +1044,29 @@
             font-weight: 600;
             font-size: 1.1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s var(--transition-smooth);
             font-family: 'Montserrat', sans-serif;
             letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .submit-btn:hover::before {
+            width: 400px;
+            height: 400px;
         }
 
         .submit-btn:hover {
@@ -857,6 +1074,28 @@
             color: var(--white);
             transform: translateY(-2px);
             box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn.loading {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .submit-btn.loading::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top-color: currentColor;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-left: 10px;
+            display: inline-block;
+            vertical-align: middle;
         }
 
         /* Footer */
@@ -942,12 +1181,140 @@
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s ease;
+            transition: all 0.8s var(--transition-smooth);
         }
 
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Staggered animations */
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+
+        /* Slide animations */
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s var(--transition-smooth);
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s var(--transition-smooth);
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Scale animation */
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s var(--transition-smooth);
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Number counter animation */
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-number.animate {
+            animation: countPulse 0.5s ease-out;
+        }
+
+        @keyframes countPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Glow effect on hover */
+        .glow-hover {
+            transition: all 0.3s ease;
+        }
+
+        .glow-hover:hover {
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Ripple effect */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .ripple:active::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Focus states for accessibility */
+        a:focus,
+        button:focus,
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Skip link for keyboard users */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 8px 16px;
+            z-index: 10000;
+            transition: top 0.3s ease;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 0 0 5px 0;
+        }
+
+        .skip-link:focus {
+            top: 0;
         }
 
         /* Mobile Responsiveness */
@@ -1098,22 +1465,31 @@
     </style>
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader" aria-hidden="true">
+        <div class="preloader-logo">MSS</div>
+        <div class="preloader-spinner"></div>
+    </div>
+
+    <!-- Skip Link for Accessibility -->
+    <a href="#services" class="skip-link">Skip to main content</a>
+
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
         <div class="nav-container">
-            <a href="#" class="logo">
+            <a href="#" class="logo" aria-label="MSS Travels and Tours - Home">
                 <span class="logo-main">MSS</span>
                 <span class="logo-sub">TRAVELS & TOURS</span>
             </a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#destinations">Destinations</a></li>
-                <li><a href="#cricket-coaching">Cricket Coaching</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact" class="cta-button">Contact Us</a></li>
+            <ul class="nav-links" role="menubar">
+                <li role="none"><a href="#home" role="menuitem">Home</a></li>
+                <li role="none"><a href="#services" role="menuitem">Services</a></li>
+                <li role="none"><a href="#destinations" role="menuitem">Destinations</a></li>
+                <li role="none"><a href="#cricket-coaching" role="menuitem">Cricket Coaching</a></li>
+                <li role="none"><a href="#about" role="menuitem">About</a></li>
+                <li role="none"><a href="#contact" class="cta-button" role="menuitem">Contact Us</a></li>
             </ul>
-            <button class="mobile-menu-btn">
+            <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="nav-links">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -1124,6 +1500,17 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-background"></div>
+        <div class="hero-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
         <div class="hero-content">
             <div class="hero-subtitle">Experience The World</div>
             <h1>Journey Between<br>UK & Sri Lanka</h1>
@@ -1151,7 +1538,7 @@
             <p class="section-description">Tailored travel experiences and professional cricket coaching designed to create unforgettable memories and enhance your skills.</p>
         </div>
         <div class="services-grid">
-            <div class="service-card fade-in">
+            <div class="service-card fade-in stagger-1">
                 <div class="service-icon">🌍</div>
                 <h3>UK Tours</h3>
                 <p>Experience the rich history and vibrant culture of the United Kingdom with our expertly curated tour packages.</p>
@@ -1163,7 +1550,7 @@
                     <li>Comfortable accommodation</li>
                 </ul>
             </div>
-            <div class="service-card fade-in">
+            <div class="service-card fade-in stagger-2">
                 <div class="service-icon">🏝️</div>
                 <h3>Sri Lanka Tours</h3>
                 <p>Explore the breathtaking beauty of Sri Lanka, from pristine beaches to ancient temples and lush tea plantations.</p>
@@ -1175,7 +1562,7 @@
                     <li>Authentic local experiences</li>
                 </ul>
             </div>
-            <div class="service-card fade-in">
+            <div class="service-card fade-in stagger-3">
                 <div class="service-icon">🏏</div>
                 <h3>Cricket Coaching</h3>
                 <p>World-class cricket coaching facilities in Sri Lanka with professional coaches and state-of-the-art training grounds.</p>
@@ -1203,21 +1590,21 @@
                 <button class="tab-button" data-tab="srilanka">Sri Lanka</button>
             </div>
             <div class="destinations-grid" id="uk-destinations">
-                <div class="destination-card fade-in">
+                <div class="destination-card fade-in stagger-1">
                     <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23c41e3a;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%23bc002d;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g1)'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='60' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3ELondon%3C/text%3E%3C/svg%3E" alt="London" class="destination-image">
                     <div class="destination-content">
                         <h3>London</h3>
                         <p>Explore iconic landmarks including Big Ben, Tower Bridge, and Buckingham Palace in England's vibrant capital city.</p>
                     </div>
                 </div>
-                <div class="destination-card fade-in">
+                <div class="destination-card fade-in stagger-2">
                     <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234a90e2;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%23357abd;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g2)'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='60' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3EEdinburgh%3C/text%3E%3C/svg%3E" alt="Edinburgh" class="destination-image">
                     <div class="destination-content">
                         <h3>Edinburgh</h3>
                         <p>Discover Scotland's historic capital with its medieval Old Town and elegant Georgian New Town.</p>
                     </div>
                 </div>
-                <div class="destination-card fade-in">
+                <div class="destination-card fade-in stagger-3">
                     <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2350c878;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%233d9e5f;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g3)'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='60' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3EOxford%3C/text%3E%3C/svg%3E" alt="Oxford" class="destination-image">
                     <div class="destination-content">
                         <h3>Oxford</h3>
@@ -1236,11 +1623,11 @@
             <p class="section-description">Train like a champion in Sri Lanka's premier cricket coaching facilities with experienced coaches and modern infrastructure.</p>
         </div>
         <div class="cricket-content">
-            <div class="cricket-image-container fade-in">
+            <div class="cricket-image-container slide-in-left">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g4' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%231a4d2e;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%232d7a4f;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g4)'/%3E%3Ctext x='50%25' y='45%25' font-family='Arial' font-size='80' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3E🏏%3C/text%3E%3Ctext x='50%25' y='60%25' font-family='Arial' font-size='40' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3ECricket Coaching%3C/text%3E%3C/svg%3E" alt="Cricket Coaching">
                 <div class="cricket-badge">Premium Facilities</div>
             </div>
-            <div class="cricket-info fade-in">
+            <div class="cricket-info slide-in-right">
                 <h3>Elevate Your Cricket Skills in Paradise</h3>
                 <p>Our cricket coaching program in Sri Lanka offers an unparalleled training experience. Combining professional coaching expertise with world-class facilities, we provide the perfect environment for players of all levels to improve their game.</p>
                 <p>Train on pristine grounds under the guidance of experienced coaches who have worked with international players. Our comprehensive programs cover all aspects of the game, from technical skills to match strategy and mental preparation.</p>
@@ -1287,20 +1674,20 @@
                 <p class="section-description">With years of expertise in the travel and tourism industry, MSS Travels and Tours is committed to delivering exceptional experiences that exceed expectations. From breathtaking tours to professional cricket coaching, we bring your travel dreams to life.</p>
             </div>
             <div class="stats-grid">
-                <div class="stat-item fade-in">
-                    <div class="stat-number">15+</div>
+                <div class="stat-item scale-in stagger-1">
+                    <div class="stat-number" data-target="15" data-suffix="+">0</div>
                     <div class="stat-label">Years Experience</div>
                 </div>
-                <div class="stat-item fade-in">
-                    <div class="stat-number">5000+</div>
+                <div class="stat-item scale-in stagger-2">
+                    <div class="stat-number" data-target="5000" data-suffix="+">0</div>
                     <div class="stat-label">Happy Travelers</div>
                 </div>
-                <div class="stat-item fade-in">
-                    <div class="stat-number">100+</div>
+                <div class="stat-item scale-in stagger-3">
+                    <div class="stat-number" data-target="100" data-suffix="+">0</div>
                     <div class="stat-label">Tour Packages</div>
                 </div>
-                <div class="stat-item fade-in">
-                    <div class="stat-number">98%</div>
+                <div class="stat-item scale-in stagger-4">
+                    <div class="stat-number" data-target="98" data-suffix="%">0</div>
                     <div class="stat-label">Satisfaction Rate</div>
                 </div>
             </div>
@@ -1315,7 +1702,7 @@
             <p class="section-description">Ready to embark on an unforgettable adventure? Contact us and let's plan your perfect tour or cricket coaching program.</p>
         </div>
         <div class="contact-container">
-            <div class="contact-info fade-in">
+            <div class="contact-info slide-in-left">
                 <h3>Contact Information</h3>
                 <p>Reach out to us through any of the following channels. We're here to answer your questions and help plan your ideal travel experience.</p>
                 <div class="contact-details">
@@ -1350,19 +1737,19 @@
                     </div>
                 </div>
             </div>
-            <div class="contact-form fade-in">
+            <div class="contact-form slide-in-right">
                 <form id="contactForm">
                     <div class="form-group">
                         <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone">
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
                     </div>
                     <div class="form-group">
                         <label for="interest">I'm Interested In *</label>
@@ -1377,10 +1764,15 @@
                     </div>
                     <div class="form-group">
                         <label for="message">Message *</label>
-                        <textarea id="message" name="message" required></textarea>
+                        <textarea id="message" name="message" placeholder="Tell us about your travel plans..." required></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
+                    <button type="submit" class="submit-btn ripple">Send Message</button>
                 </form>
+                <div class="form-success" id="formSuccess">
+                    <div class="form-success-icon">✅</div>
+                    <h3>Message Sent Successfully!</h3>
+                    <p>Thank you for your inquiry. We'll get back to you within 24 hours.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1432,6 +1824,14 @@
     </footer>
 
     <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+            }, 1000);
+        });
+
         // Mobile Menu Toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
@@ -1439,6 +1839,8 @@
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenuBtn.classList.toggle('active');
             navLinks.classList.toggle('active');
+            const isExpanded = mobileMenuBtn.classList.contains('active');
+            mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
         });
 
         // Close mobile menu when clicking on a link
@@ -1475,7 +1877,7 @@
             });
         });
 
-        // Fade-in animation on scroll
+        // Enhanced Intersection Observer for all animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1485,34 +1887,66 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    
+                    // Animate number counters
+                    if (entry.target.classList.contains('stat-item')) {
+                        const numberEl = entry.target.querySelector('.stat-number');
+                        if (numberEl && numberEl.dataset.target) {
+                            animateNumber(numberEl);
+                        }
+                    }
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(element => {
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(element => {
             observer.observe(element);
         });
+
+        // Number counter animation
+        const ANIMATION_FRAME_MS = 16; // ~60fps
+        const COUNTER_DURATION_MS = 2000;
+        
+        function animateNumber(element) {
+            const target = parseInt(element.dataset.target);
+            const suffix = element.dataset.suffix || '';
+            const step = target / (COUNTER_DURATION_MS / ANIMATION_FRAME_MS);
+            let current = 0;
+            
+            const counter = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(counter);
+                    element.classList.add('animate');
+                    element.textContent = target + suffix;
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, ANIMATION_FRAME_MS);
+        }
 
         // Destination tabs
         const tabButtons = document.querySelectorAll('.tab-button');
         const destinationsGrid = document.querySelector('.destinations-grid');
 
         const ukDestinations = `
-            <div class="destination-card fade-in">
+            <div class="destination-card fade-in stagger-1">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23c41e3a;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%23bc002d;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g1)'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='60' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3ELondon%3C/text%3E%3C/svg%3E" alt="London" class="destination-image">
                 <div class="destination-content">
                     <h3>London</h3>
                     <p>Explore iconic landmarks including Big Ben, Tower Bridge, and Buckingham Palace in England's vibrant capital city.</p>
                 </div>
             </div>
-            <div class="destination-card fade-in">
+            <div class="destination-card fade-in stagger-2">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234a90e2;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%23357abd;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g2)'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='60' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3EEdinburgh%3C/text%3E%3C/svg%3E" alt="Edinburgh" class="destination-image">
                 <div class="destination-content">
                     <h3>Edinburgh</h3>
                     <p>Discover Scotland's historic capital with its medieval Old Town and elegant Georgian New Town.</p>
                 </div>
             </div>
-            <div class="destination-card fade-in">
+            <div class="destination-card fade-in stagger-3">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2350c878;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%233d9e5f;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g3)'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='60' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3EOxford%3C/text%3E%3C/svg%3E" alt="Oxford" class="destination-image">
                 <div class="destination-content">
                     <h3>Oxford</h3>
@@ -1522,21 +1956,21 @@
         `;
 
         const sriLankaDestinations = `
-            <div class="destination-card fade-in">
+            <div class="destination-card fade-in stagger-1">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g5' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2300bcd4;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%230097a7;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g5)'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='60' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3EColombo%3C/text%3E%3C/svg%3E" alt="Colombo" class="destination-image">
                 <div class="destination-content">
                     <h3>Colombo</h3>
                     <p>Experience the bustling capital city with its blend of modern architecture and colonial charm.</p>
                 </div>
             </div>
-            <div class="destination-card fade-in">
+            <div class="destination-card fade-in stagger-2">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g6' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234caf50;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%23388e3c;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g6)'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='60' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3EKandy%3C/text%3E%3C/svg%3E" alt="Kandy" class="destination-image">
                 <div class="destination-content">
                     <h3>Kandy</h3>
                     <p>Visit the sacred city home to the Temple of the Tooth and surrounded by lush green mountains.</p>
                 </div>
             </div>
-            <div class="destination-card fade-in">
+            <div class="destination-card fade-in stagger-3">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g7' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23ff9800;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%23f57c00;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g7)'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='60' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3EGalle%3C/text%3E%3C/svg%3E" alt="Galle" class="destination-image">
                 <div class="destination-content">
                     <h3>Galle</h3>
@@ -1564,18 +1998,36 @@
             });
         });
 
-        // Form submission
+        // Form submission with improved UX
+        const FORM_SUBMIT_DELAY_MS = 1500;
+        const FORM_RESET_DELAY_MS = 5000;
+        
         const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+        const submitBtn = contactForm.querySelector('.submit-btn');
+        
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Get form data
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData);
+            // Add loading state
+            submitBtn.classList.add('loading');
+            submitBtn.textContent = 'Sending...';
             
             // Simulate form submission
-            alert('Thank you for your inquiry! We will get back to you shortly.');
-            contactForm.reset();
+            setTimeout(() => {
+                // Hide form and show success message
+                contactForm.style.display = 'none';
+                formSuccess.classList.add('show');
+                
+                // Reset after delay
+                setTimeout(() => {
+                    contactForm.style.display = 'block';
+                    formSuccess.classList.remove('show');
+                    submitBtn.classList.remove('loading');
+                    submitBtn.textContent = 'Send Message';
+                    contactForm.reset();
+                }, FORM_RESET_DELAY_MS);
+            }, FORM_SUBMIT_DELAY_MS);
         });
 
         // Parallax effect for hero section
@@ -1587,27 +2039,46 @@
             }
         });
 
-        // Add cursor trail effect (optional enhancement)
-        document.addEventListener('mousemove', (e) => {
-            const trail = document.createElement('div');
-            trail.style.position = 'fixed';
-            trail.style.width = '5px';
-            trail.style.height = '5px';
-            trail.style.borderRadius = '50%';
-            trail.style.background = 'rgba(212, 175, 55, 0.3)';
-            trail.style.left = e.clientX + 'px';
-            trail.style.top = e.clientY + 'px';
-            trail.style.pointerEvents = 'none';
-            trail.style.zIndex = '9999';
-            
-            document.body.appendChild(trail);
-            
-            setTimeout(() => {
-                trail.style.transition = 'all 0.5s ease';
-                trail.style.opacity = '0';
-                trail.style.transform = 'scale(0)';
-                setTimeout(() => trail.remove(), 500);
-            }, 10);
+        // Smooth reveal on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add initial animation classes
+            document.body.style.opacity = '1';
+        });
+
+        // Keyboard navigation support for accessibility
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    button.click();
+                }
+            });
+        });
+
+        // Focus trap for mobile menu
+        const mobileNav = document.querySelector('.nav-links');
+        const focusableElements = mobileNav.querySelectorAll('a, button');
+        const firstFocusable = focusableElements[0];
+        const lastFocusable = focusableElements[focusableElements.length - 1];
+
+        mobileNav.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                if (e.shiftKey) {
+                    if (document.activeElement === firstFocusable) {
+                        e.preventDefault();
+                        lastFocusable.focus();
+                    }
+                } else {
+                    if (document.activeElement === lastFocusable) {
+                        e.preventDefault();
+                        firstFocusable.focus();
+                    }
+                }
+            }
+            if (e.key === 'Escape') {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
         });
     </script>
 </body>
