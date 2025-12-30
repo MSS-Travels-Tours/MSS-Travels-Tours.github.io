@@ -26,6 +26,12 @@
             --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
             --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
             --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            /* Z-index scale for consistent layering */
+            --z-index-navbar: 1000;
+            --z-index-mobile-overlay: 1001;
+            --z-index-mobile-menu: 1002;
+            --z-index-mobile-btn: 1003;
+            --z-index-preloader: 9999;
         }
 
         /* Preloader Styles */
@@ -36,7 +42,7 @@
             width: 100%;
             height: 100%;
             background: var(--dark);
-            z-index: 9999;
+            z-index: var(--z-index-preloader);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -88,6 +94,13 @@
             line-height: 1.7;
             overflow-x: hidden;
             background: var(--cream);
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -103,7 +116,7 @@
             width: 100%;
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
-            z-index: 1000;
+            z-index: var(--z-index-navbar);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 2px 20px var(--shadow);
         }
@@ -211,6 +224,7 @@
             border: none;
             cursor: pointer;
             padding: 5px;
+            z-index: var(--z-index-mobile-btn);
         }
 
         .mobile-menu-btn span {
@@ -231,6 +245,25 @@
 
         .mobile-menu-btn.active span:nth-child(3) {
             transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Mobile menu overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: var(--z-index-mobile-overlay);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            display: block;
+            opacity: 1;
         }
 
         /* Hero Section */
@@ -467,7 +500,7 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
             gap: 2.5rem;
             max-width: 1400px;
             margin: 0 auto;
@@ -659,7 +692,7 @@
 
         .destinations-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
             gap: 2.5rem;
         }
 
@@ -850,7 +883,7 @@
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
             gap: 3rem;
             margin-top: 5rem;
         }
@@ -1330,6 +1363,14 @@
             .section-title {
                 font-size: 3rem;
             }
+
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .destinations-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
         }
 
         @media (max-width: 968px) {
@@ -1346,14 +1387,31 @@
                 transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                 align-items: flex-start;
                 gap: 1.5rem;
+                overflow-y: auto;
             }
 
             .nav-links.active {
                 right: 0;
             }
 
+            .nav-links a {
+                font-size: 1.1rem;
+                padding: 0.5rem 0;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+            }
+
+            .nav-links.active {
+                z-index: var(--z-index-mobile-menu);
+            }
+
             .mobile-menu-btn {
                 display: flex;
+                min-width: 44px;
+                min-height: 44px;
+                justify-content: center;
+                align-items: center;
             }
 
             .hero h1 {
@@ -1368,9 +1426,14 @@
                 font-size: 2.5rem;
             }
 
-            .services-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
             .destinations-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .cricket-content,
@@ -1383,69 +1446,542 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 3rem;
             }
+
+            .destinations-tabs {
+                gap: 1rem;
+            }
+
+            .tab-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+                min-height: 44px;
+            }
+
+            .contact-item {
+                padding: 1.2rem;
+            }
+
+            .cricket-feature {
+                padding: 1.2rem;
+            }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0.8rem 1rem;
+            }
+
+            .logo-main {
+                font-size: 1.5rem;
+            }
+
+            .logo-sub {
+                font-size: 0.65rem;
+            }
+
             section {
-                padding: 5rem 1.5rem;
+                padding: 4rem 1rem;
+            }
+
+            .section-header {
+                margin-bottom: 3rem;
             }
 
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
 
             .hero-subtitle {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
                 letter-spacing: 2px;
             }
 
             .hero-description {
                 font-size: 1rem;
+                padding: 0 0.5rem;
+            }
+
+            .hero-content {
+                padding: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .section-description {
+                font-size: 1rem;
+            }
+
+            .service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .service-card h3 {
+                font-size: 1.5rem;
+            }
+
+            .destination-card {
+                height: 350px;
+            }
+
+            .destination-card h3 {
+                font-size: 1.6rem;
+            }
+
+            .destination-content {
+                padding: 1.5rem;
+            }
+
+            .cricket-image-container {
+                height: 350px;
+            }
+
+            .cricket-info h3 {
+                font-size: 2rem;
+            }
+
+            .cricket-info p {
+                font-size: 1rem;
+            }
+
+            .contact-info h3 {
+                font-size: 2rem;
+            }
+
+            .contact-info p {
+                font-size: 1rem;
+            }
+
+            .contact-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .footer-section h3 {
+                font-size: 1.3rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.95rem;
+            }
+
+            .stat-item {
+                padding: 1.5rem 1rem;
+            }
+
+            .scroll-indicator {
+                bottom: 1.5rem;
+            }
+
+            .scroll-indicator svg {
+                width: 24px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .hero {
+                min-height: 100vh;
+                min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                word-wrap: break-word;
+            }
+
+            .hero-subtitle {
+                font-size: 0.75rem;
+                letter-spacing: 1.5px;
+            }
+
+            .hero-description {
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
             }
 
             .hero-buttons {
                 flex-direction: column;
                 width: 100%;
+                gap: 1rem;
             }
 
             .btn-primary,
             .btn-secondary {
                 width: 100%;
+                padding: 1rem 1.5rem;
+                font-size: 0.95rem;
+                text-align: center;
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
-            .service-card,
-            .contact-form {
-                padding: 2rem;
+            .section-subtitle {
+                font-size: 0.85rem;
+                letter-spacing: 2px;
             }
 
-            .destinations-grid {
-                grid-template-columns: 1fr;
+            .section-description {
+                font-size: 0.95rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .service-card h3 {
+                font-size: 1.4rem;
+            }
+
+            .service-card p {
+                font-size: 0.95rem;
+            }
+
+            .service-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .service-features li {
+                font-size: 0.9rem;
+            }
+
+            .destinations-tabs {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.8rem;
+            }
+
+            .tab-button {
+                width: 100%;
+                padding: 0.9rem 1.5rem;
             }
 
             .destination-card {
-                height: 400px;
+                height: 300px;
+            }
+
+            .destination-card h3 {
+                font-size: 1.4rem;
+            }
+
+            .destination-card p {
+                font-size: 0.9rem;
+            }
+
+            .destination-content {
+                padding: 1.2rem;
             }
 
             .cricket-image-container {
-                height: 400px;
+                height: 280px;
             }
 
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            .cricket-badge {
+                top: 1rem;
+                right: 1rem;
+                padding: 0.7rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .cricket-info h3 {
+                font-size: 1.6rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .cricket-info p {
+                font-size: 0.95rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .cricket-features {
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+
+            .cricket-feature {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.2rem;
+            }
+
+            .cricket-feature-icon {
+                margin: 0 auto 0.8rem;
+            }
+
+            .cricket-feature h4 {
+                font-size: 1.1rem;
+            }
+
+            .cricket-feature p {
+                font-size: 0.9rem;
+            }
+
+            .contact-info h3 {
+                font-size: 1.6rem;
+            }
+
+            .contact-info p {
+                font-size: 0.95rem;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.2rem;
+            }
+
+            .contact-icon {
+                margin: 0 auto 0.8rem;
+            }
+
+            .contact-item h4 {
+                font-size: 1.1rem;
+            }
+
+            .contact-item p,
+            .contact-item a {
+                font-size: 0.9rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .form-group {
+                margin-bottom: 1.5rem;
+            }
+
+            .form-group label {
+                font-size: 0.9rem;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 0.9rem;
+                /* 16px minimum prevents iOS auto-zoom on focus. 
+                   This is the standard cross-browser solution as iOS Safari 
+                   zooms on inputs with font-size below 16px */
+                font-size: 16px;
+            }
+
+            .submit-btn {
+                padding: 1rem;
+                font-size: 1rem;
             }
 
             .stats-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1rem;
             }
 
             .stat-number {
-                font-size: 3rem;
+                font-size: 2.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.9rem;
+            }
+
+            .about-container .section-description {
+                font-size: 1rem;
+            }
+
+            footer {
+                padding: 3rem 1rem 1.5rem;
+            }
+
+            .footer-section p {
+                font-size: 0.9rem;
+            }
+
+            .footer-links a,
+            .footer-links li {
+                font-size: 0.9rem;
+            }
+
+            .footer-bottom {
+                padding-top: 1.5rem;
+            }
+
+            .footer-bottom p {
+                font-size: 0.8rem;
+            }
+
+            .social-links a {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .preloader-logo {
+                font-size: 2rem;
+            }
+
+            .preloader-spinner {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 360px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .service-card h3,
+            .cricket-info h3,
+            .contact-info h3 {
+                font-size: 1.3rem;
+            }
+
+            .destination-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+
+        /* Landscape mode for mobile */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero {
+                min-height: auto;
+                padding: 5rem 2rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-description {
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .nav-links a::after {
+                display: none; /* Disable underline animation on touch devices */
+            }
+
+            .service-card:hover {
+                transform: none; /* Disable hover effects on touch */
+            }
+
+            .destination-card:hover .destination-image {
+                transform: none;
+            }
+
+            .btn-primary:hover,
+            .btn-secondary:hover {
+                transform: none;
+            }
+
+            .cta-button:hover {
+                transform: none;
+            }
+
+            /* Add active states for touch */
+            .btn-primary:active,
+            .btn-secondary:active {
+                transform: scale(0.98);
+                opacity: 0.9;
+            }
+
+            .service-card:active {
+                transform: scale(0.99);
+            }
+
+            .tab-button:active {
+                transform: scale(0.98);
+            }
+        }
+
+        /* Safe area insets for notched phones */
+        @supports (padding: max(0px)) {
+            .navbar {
+                padding-left: max(1rem, env(safe-area-inset-left));
+                padding-right: max(1rem, env(safe-area-inset-right));
+            }
+
+            .nav-links.active {
+                padding-bottom: max(2rem, env(safe-area-inset-bottom));
+            }
+
+            footer {
+                padding-bottom: max(2rem, env(safe-area-inset-bottom));
+            }
+
+            section {
+                padding-left: max(1rem, env(safe-area-inset-left));
+                padding-right: max(1rem, env(safe-area-inset-right));
+            }
+        }
+
+        /* Improve mobile scroll performance */
+        @media (max-width: 968px) {
+            .hero-background {
+                transform: none !important; /* Disable parallax on mobile for better performance */
+            }
+
+            .hero-particles .particle {
+                animation-duration: 20s; /* Slower animation for better battery life */
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .preloader,
+            .navbar,
+            .mobile-menu-btn,
+            .scroll-indicator,
+            .hero-particles {
+                display: none !important;
+            }
+
+            .hero {
+                height: auto;
+                min-height: auto;
+                page-break-after: always;
+            }
+
+            section {
+                page-break-inside: avoid;
             }
         }
 
@@ -1481,7 +2017,7 @@
                 <span class="logo-main">MSS</span>
                 <span class="logo-sub">TRAVELS & TOURS</span>
             </a>
-            <ul class="nav-links" role="menubar">
+            <ul class="nav-links" id="nav-links" role="menubar">
                 <li role="none"><a href="#home" role="menuitem">Home</a></li>
                 <li role="none"><a href="#services" role="menuitem">Services</a></li>
                 <li role="none"><a href="#destinations" role="menuitem">Destinations</a></li>
@@ -1489,6 +2025,7 @@
                 <li role="none"><a href="#about" role="menuitem">About</a></li>
                 <li role="none"><a href="#contact" class="cta-button" role="menuitem">Contact Us</a></li>
             </ul>
+            <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
             <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="nav-links">
                 <span></span>
                 <span></span>
@@ -1835,20 +2372,37 @@
         // Mobile Menu Toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
 
-        mobileMenuBtn.addEventListener('click', () => {
+        function toggleMobileMenu() {
             mobileMenuBtn.classList.toggle('active');
             navLinks.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
             const isExpanded = mobileMenuBtn.classList.contains('active');
             mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
-        });
+            
+            // Prevent body scroll when menu is open
+            if (isExpanded) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeMobileMenu() {
+            mobileMenuBtn.classList.remove('active');
+            navLinks.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
 
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenuBtn.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
+            link.addEventListener('click', closeMobileMenu);
         });
 
         // Navbar scroll effect
@@ -2030,14 +2584,18 @@
             }, FORM_SUBMIT_DELAY_MS);
         });
 
-        // Parallax effect for hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const heroBackground = document.querySelector('.hero-background');
-            if (heroBackground) {
-                heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
+        // Parallax effect for hero section (disabled on mobile for performance)
+        const isMobile = window.matchMedia('(max-width: 968px)').matches;
+        
+        if (!isMobile) {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const heroBackground = document.querySelector('.hero-background');
+                if (heroBackground) {
+                    heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+            });
+        }
 
         // Smooth reveal on page load
         document.addEventListener('DOMContentLoaded', () => {
@@ -2076,8 +2634,7 @@
                 }
             }
             if (e.key === 'Escape') {
-                mobileMenuBtn.classList.remove('active');
-                navLinks.classList.remove('active');
+                closeMobileMenu();
             }
         });
     </script>
