@@ -371,6 +371,94 @@
             animation: fadeIn 1s ease-out 0.3s both;
         }
 
+        /* Flag Styles */
+        .flags-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+
+        .flag-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .flag {
+            width: 80px;
+            height: 48px;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .flag svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .flag-label {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .flags-divider {
+            color: var(--accent);
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+
+        /* Tab flag icons */
+        .tab-flag {
+            width: 24px;
+            height: 14px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .flags-container {
+                gap: 1rem;
+            }
+            
+            .flag {
+                width: 60px;
+                height: 36px;
+            }
+
+            .flag-label {
+                font-size: 0.65rem;
+            }
+
+            .flags-divider {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .flag {
+                width: 50px;
+                height: 30px;
+            }
+
+            .flag-label {
+                font-size: 0.6rem;
+            }
+
+            .flags-container {
+                gap: 0.8rem;
+            }
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -2050,6 +2138,80 @@
         </div>
         <div class="hero-content">
             <div class="hero-subtitle">Experience The World</div>
+            <div class="flags-container">
+                <div class="flag-wrapper">
+                    <div class="flag" aria-label="United Kingdom Flag">
+                        <!-- Union Jack - UK Flag -->
+                        <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+                            <clipPath id="hero-uk-clip">
+                                <path d="M0,0 v30 h60 v-30 z"/>
+                            </clipPath>
+                            <clipPath id="hero-uk-diagonal">
+                                <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/>
+                            </clipPath>
+                            <g clip-path="url(#hero-uk-clip)">
+                                <!-- Blue background -->
+                                <rect width="60" height="30" fill="#012169"/>
+                                <!-- White diagonal stripes -->
+                                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#FFF" stroke-width="6"/>
+                                <!-- Red diagonal stripes (clipped) -->
+                                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4" clip-path="url(#hero-uk-diagonal)"/>
+                                <!-- White cross -->
+                                <path d="M30,0 v30 M0,15 h60" stroke="#FFF" stroke-width="10"/>
+                                <!-- Red cross -->
+                                <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <span class="flag-label">United Kingdom</span>
+                </div>
+                <span class="flags-divider">✈</span>
+                <div class="flag-wrapper">
+                    <div class="flag" aria-label="Sri Lanka Flag">
+                        <!-- Sri Lankan Lion Flag (Moth Flag) with authentic colors -->
+                        <svg viewBox="0 0 180 90" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Green stripe (Muslim minority) -->
+                            <rect x="0" y="0" width="27" height="90" fill="#0F563C"/>
+                            <!-- Orange stripe (Tamil minority) - authentic saffron -->
+                            <rect x="27" y="0" width="27" height="90" fill="#FF8200"/>
+                            <!-- Gold border around maroon section -->
+                            <rect x="54" y="0" width="126" height="90" fill="#FFB700"/>
+                            <!-- Maroon background (Sinhalese majority) - authentic moth flag maroon -->
+                            <rect x="59" y="5" width="116" height="80" fill="#8B2346"/>
+                            <!-- Gold lion silhouette - simplified but authentic -->
+                            <g fill="#FFB700">
+                                <!-- Lion body -->
+                                <ellipse cx="117" cy="55" rx="25" ry="18"/>
+                                <!-- Lion head -->
+                                <circle cx="137" cy="38" r="14"/>
+                                <!-- Lion mane -->
+                                <ellipse cx="132" cy="35" rx="8" ry="12"/>
+                                <!-- Lion front leg -->
+                                <rect x="100" y="55" width="8" height="25" rx="3"/>
+                                <!-- Lion back leg -->
+                                <rect x="125" y="55" width="8" height="25" rx="3"/>
+                                <!-- Lion tail (curved up) -->
+                                <path d="M92,50 Q80,35 85,25 Q88,22 92,28 Q95,38 95,50" fill="#FFB700"/>
+                                <!-- Sword in lion's paw -->
+                                <rect x="148" y="15" width="3" height="45" fill="#FFB700"/>
+                                <rect x="144" y="15" width="11" height="5" rx="1" fill="#FFB700"/>
+                            </g>
+                            <!-- Four Bo leaves in corners (simplified) -->
+                            <g fill="#FFB700">
+                                <!-- Top left bo leaf -->
+                                <ellipse cx="67" cy="13" rx="4" ry="6"/>
+                                <!-- Top right bo leaf -->
+                                <ellipse cx="163" cy="13" rx="4" ry="6"/>
+                                <!-- Bottom left bo leaf -->
+                                <ellipse cx="67" cy="77" rx="4" ry="6"/>
+                                <!-- Bottom right bo leaf -->
+                                <ellipse cx="163" cy="77" rx="4" ry="6"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <span class="flag-label">Sri Lanka</span>
+                </div>
+            </div>
             <h1>Journey Between<br>UK & Sri Lanka</h1>
             <p class="hero-description">Discover breathtaking destinations, immerse yourself in rich cultures, and elevate your cricket skills with world-class coaching facilities in the paradise island of Sri Lanka.</p>
             <div class="hero-buttons">
@@ -2123,8 +2285,49 @@
         </div>
         <div class="destinations-container">
             <div class="destinations-tabs">
-                <button class="tab-button active" data-tab="uk">United Kingdom</button>
-                <button class="tab-button" data-tab="srilanka">Sri Lanka</button>
+                <button class="tab-button active" data-tab="uk">
+                    <svg class="tab-flag" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+                        <clipPath id="tab-uk-clip">
+                            <path d="M0,0 v30 h60 v-30 z"/>
+                        </clipPath>
+                        <clipPath id="tab-uk-diagonal">
+                            <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/>
+                        </clipPath>
+                        <g clip-path="url(#tab-uk-clip)">
+                            <rect width="60" height="30" fill="#012169"/>
+                            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#FFF" stroke-width="6"/>
+                            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4" clip-path="url(#tab-uk-diagonal)"/>
+                            <path d="M30,0 v30 M0,15 h60" stroke="#FFF" stroke-width="10"/>
+                            <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+                        </g>
+                    </svg>
+                    United Kingdom
+                </button>
+                <button class="tab-button" data-tab="srilanka">
+                    <svg class="tab-flag" viewBox="0 0 180 90" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0" y="0" width="27" height="90" fill="#0F563C"/>
+                        <rect x="27" y="0" width="27" height="90" fill="#FF8200"/>
+                        <rect x="54" y="0" width="126" height="90" fill="#FFB700"/>
+                        <rect x="59" y="5" width="116" height="80" fill="#8B2346"/>
+                        <g fill="#FFB700">
+                            <ellipse cx="117" cy="55" rx="25" ry="18"/>
+                            <circle cx="137" cy="38" r="14"/>
+                            <ellipse cx="132" cy="35" rx="8" ry="12"/>
+                            <rect x="100" y="55" width="8" height="25" rx="3"/>
+                            <rect x="125" y="55" width="8" height="25" rx="3"/>
+                            <path d="M92,50 Q80,35 85,25 Q88,22 92,28 Q95,38 95,50"/>
+                            <rect x="148" y="15" width="3" height="45"/>
+                            <rect x="144" y="15" width="11" height="5" rx="1"/>
+                        </g>
+                        <g fill="#FFB700">
+                            <ellipse cx="67" cy="13" rx="4" ry="6"/>
+                            <ellipse cx="163" cy="13" rx="4" ry="6"/>
+                            <ellipse cx="67" cy="77" rx="4" ry="6"/>
+                            <ellipse cx="163" cy="77" rx="4" ry="6"/>
+                        </g>
+                    </svg>
+                    Sri Lanka
+                </button>
             </div>
             <div class="destinations-grid" id="uk-destinations">
                 <div class="destination-card fade-in stagger-1">
