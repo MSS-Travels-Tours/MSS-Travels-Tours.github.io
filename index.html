@@ -83,8 +83,8 @@
     <!-- Preload Critical Resources -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" as="style">
     <link rel="preload" as="image" href="/images/hero-background.jpg" type="image/jpeg">
-    <link rel="preload" as="image" href="/images/uk-flag.jpg" type="image/jpeg">
-    <link rel="preload" as="image" href="/images/sri-lanka-flag.jpg" type="image/jpeg">
+    <link rel="preload" as="image" href="https://res.cloudinary.com/dkj22lm1g/image/upload/v1767117588/Flag-of-United-Kingdom_ope4nr.webp" type="image/webp">
+    <link rel="preload" as="image" href="https://res.cloudinary.com/dkj22lm1g/image/upload/v1767117588/Flag-of-Sri-Lanka_nrvsjx.webp" type="image/webp">
     
     <!-- DNS Prefetch -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
@@ -677,12 +677,13 @@
         /* Tab flag icons */
         .tab-flag {
             width: 24px;
-            height: 14px;
+            height: 15px;
             display: inline-block;
             vertical-align: middle;
             margin-right: 8px;
             border-radius: 2px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
         }
 
         @media (max-width: 768px) {
@@ -2514,8 +2515,8 @@
     <div style="position: absolute; width: 0; height: 0; overflow: hidden; opacity: 0; pointer-events: none;" aria-hidden="true">
         <!-- Hero Images -->
         <img src="/images/hero-background.jpg" alt="" width="1920" height="1080" loading="eager">
-        <img src="/images/uk-flag.jpg" alt="" width="800" height="600" loading="eager">
-        <img src="/images/sri-lanka-flag.jpg" alt="" width="800" height="600" loading="eager">
+        <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1767117588/Flag-of-United-Kingdom_ope4nr.webp" alt="" width="80" height="48" loading="eager">
+        <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1767117588/Flag-of-Sri-Lanka_nrvsjx.webp" alt="" width="80" height="48" loading="eager">
         
         <!-- Service Images -->
         <img src="/images/service-uk-tours.jpg" alt="" width="600" height="400" loading="lazy">
@@ -2603,73 +2604,14 @@
             <div class="flags-container">
                 <div class="flag-wrapper">
                     <div class="flag" aria-label="United Kingdom Flag">
-                        <!-- Union Jack - UK Flag -->
-                        <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
-                            <clipPath id="hero-uk-clip">
-                                <path d="M0,0 v30 h60 v-30 z"/>
-                            </clipPath>
-                            <clipPath id="hero-uk-diagonal">
-                                <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/>
-                            </clipPath>
-                            <g clip-path="url(#hero-uk-clip)">
-                                <!-- Blue background -->
-                                <rect width="60" height="30" fill="#012169"/>
-                                <!-- White diagonal stripes -->
-                                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#FFF" stroke-width="6"/>
-                                <!-- Red diagonal stripes (clipped) -->
-                                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4" clip-path="url(#hero-uk-diagonal)"/>
-                                <!-- White cross -->
-                                <path d="M30,0 v30 M0,15 h60" stroke="#FFF" stroke-width="10"/>
-                                <!-- Red cross -->
-                                <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
-                            </g>
-                        </svg>
+                        <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1767117588/Flag-of-United-Kingdom_ope4nr.webp" alt="United Kingdom Flag" width="80" height="48" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <span class="flag-label">United Kingdom</span>
                 </div>
                 <span class="flags-divider">✈</span>
                 <div class="flag-wrapper">
                     <div class="flag" aria-label="Sri Lanka Flag">
-                        <!-- Sri Lankan Lion Flag (Moth Flag) with authentic colors -->
-                        <svg viewBox="0 0 180 90" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Green stripe (Muslim minority) -->
-                            <rect x="0" y="0" width="27" height="90" fill="#0F563C"/>
-                            <!-- Orange stripe (Tamil minority) - authentic saffron -->
-                            <rect x="27" y="0" width="27" height="90" fill="#FF8200"/>
-                            <!-- Gold border around maroon section -->
-                            <rect x="54" y="0" width="126" height="90" fill="#FFB700"/>
-                            <!-- Maroon background (Sinhalese majority) - authentic moth flag maroon -->
-                            <rect x="59" y="5" width="116" height="80" fill="#8B2346"/>
-                            <!-- Gold lion silhouette - simplified but authentic -->
-                            <g fill="#FFB700">
-                                <!-- Lion body -->
-                                <ellipse cx="117" cy="55" rx="25" ry="18"/>
-                                <!-- Lion head -->
-                                <circle cx="137" cy="38" r="14"/>
-                                <!-- Lion mane -->
-                                <ellipse cx="132" cy="35" rx="8" ry="12"/>
-                                <!-- Lion front leg -->
-                                <rect x="100" y="55" width="8" height="25" rx="3"/>
-                                <!-- Lion back leg -->
-                                <rect x="125" y="55" width="8" height="25" rx="3"/>
-                                <!-- Lion tail (curved up) -->
-                                <path d="M92,50 Q80,35 85,25 Q88,22 92,28 Q95,38 95,50" fill="#FFB700"/>
-                                <!-- Sword in lion's paw -->
-                                <rect x="148" y="15" width="3" height="45" fill="#FFB700"/>
-                                <rect x="144" y="15" width="11" height="5" rx="1" fill="#FFB700"/>
-                            </g>
-                            <!-- Four Bo leaves in corners (simplified) -->
-                            <g fill="#FFB700">
-                                <!-- Top left bo leaf -->
-                                <ellipse cx="67" cy="13" rx="4" ry="6"/>
-                                <!-- Top right bo leaf -->
-                                <ellipse cx="163" cy="13" rx="4" ry="6"/>
-                                <!-- Bottom left bo leaf -->
-                                <ellipse cx="67" cy="77" rx="4" ry="6"/>
-                                <!-- Bottom right bo leaf -->
-                                <ellipse cx="163" cy="77" rx="4" ry="6"/>
-                            </g>
-                        </svg>
+                        <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1767117588/Flag-of-Sri-Lanka_nrvsjx.webp" alt="Sri Lanka Flag" width="80" height="48" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <span class="flag-label">Sri Lanka</span>
                 </div>
@@ -2748,46 +2690,11 @@
         <div class="destinations-container">
             <div class="destinations-tabs">
                 <button class="tab-button active" data-tab="uk">
-                    <svg class="tab-flag" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
-                        <clipPath id="tab-uk-clip">
-                            <path d="M0,0 v30 h60 v-30 z"/>
-                        </clipPath>
-                        <clipPath id="tab-uk-diagonal">
-                            <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/>
-                        </clipPath>
-                        <g clip-path="url(#tab-uk-clip)">
-                            <rect width="60" height="30" fill="#012169"/>
-                            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#FFF" stroke-width="6"/>
-                            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4" clip-path="url(#tab-uk-diagonal)"/>
-                            <path d="M30,0 v30 M0,15 h60" stroke="#FFF" stroke-width="10"/>
-                            <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
-                        </g>
-                    </svg>
+                    <img class="tab-flag" src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1767117588/Flag-of-United-Kingdom_ope4nr.webp" alt="UK Flag" width="24" height="15">
                     United Kingdom
                 </button>
                 <button class="tab-button" data-tab="srilanka">
-                    <svg class="tab-flag" viewBox="0 0 180 90" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="0" y="0" width="27" height="90" fill="#0F563C"/>
-                        <rect x="27" y="0" width="27" height="90" fill="#FF8200"/>
-                        <rect x="54" y="0" width="126" height="90" fill="#FFB700"/>
-                        <rect x="59" y="5" width="116" height="80" fill="#8B2346"/>
-                        <g fill="#FFB700">
-                            <ellipse cx="117" cy="55" rx="25" ry="18"/>
-                            <circle cx="137" cy="38" r="14"/>
-                            <ellipse cx="132" cy="35" rx="8" ry="12"/>
-                            <rect x="100" y="55" width="8" height="25" rx="3"/>
-                            <rect x="125" y="55" width="8" height="25" rx="3"/>
-                            <path d="M92,50 Q80,35 85,25 Q88,22 92,28 Q95,38 95,50"/>
-                            <rect x="148" y="15" width="3" height="45"/>
-                            <rect x="144" y="15" width="11" height="5" rx="1"/>
-                        </g>
-                        <g fill="#FFB700">
-                            <ellipse cx="67" cy="13" rx="4" ry="6"/>
-                            <ellipse cx="163" cy="13" rx="4" ry="6"/>
-                            <ellipse cx="67" cy="77" rx="4" ry="6"/>
-                            <ellipse cx="163" cy="77" rx="4" ry="6"/>
-                        </g>
-                    </svg>
+                    <img class="tab-flag" src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1767117588/Flag-of-Sri-Lanka_nrvsjx.webp" alt="Sri Lanka Flag" width="24" height="15">
                     Sri Lanka
                 </button>
             </div>
