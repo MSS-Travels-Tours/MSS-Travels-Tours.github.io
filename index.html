@@ -554,6 +554,89 @@
             animation: gradientShift 20s ease infinite;
         }
 
+        /* Hero Slideshow Styles */
+        .hero-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-slideshow .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .hero-slideshow .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slideshow .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-slideshow-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(15, 20, 25, 0.75) 0%, rgba(26, 77, 46, 0.6) 100%);
+            z-index: 1;
+        }
+
+        .hero-slideshow-indicators {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+
+        .hero-slideshow-indicators .hero-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .hero-slideshow-indicators .hero-indicator:hover {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .hero-slideshow-indicators .hero-indicator.active {
+            background: var(--accent);
+            border-color: var(--white);
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero-slideshow-indicators {
+                bottom: 80px;
+                gap: 8px;
+            }
+
+            .hero-slideshow-indicators .hero-indicator {
+                width: 10px;
+                height: 10px;
+            }
+        }
+
         /* Floating particles effect */
         .hero-particles {
             position: absolute;
@@ -2689,6 +2772,56 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero" itemscope itemtype="https://schema.org/WPHeader">
+        <!-- Hero Image Slideshow -->
+        <div class="hero-slideshow" id="heroSlideshow">
+            <div class="hero-slide active">
+                <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1768117763/1_gqaxqg.webp" alt="Previous tour group enjoying scenic Sri Lanka landscape" loading="eager">
+            </div>
+            <div class="hero-slide">
+                <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1768117769/2_hxp10k.webp" alt="Tourists exploring cultural heritage sites with MSS Tours" loading="lazy">
+            </div>
+            <div class="hero-slide">
+                <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1768117764/3_n1vkhv.webp" alt="Happy travelers on a guided tour adventure" loading="lazy">
+            </div>
+            <div class="hero-slide">
+                <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1768117758/4_rdm1in.webp" alt="Tour group visiting historical landmarks" loading="lazy">
+            </div>
+            <div class="hero-slide">
+                <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1768117748/5_xch22j.webp" alt="Memorable moments from MSS Travels guided tour" loading="lazy">
+            </div>
+            <div class="hero-slide">
+                <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1768117748/6_acdqae.webp" alt="Travelers experiencing local culture and attractions" loading="lazy">
+            </div>
+            <div class="hero-slide">
+                <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1768117749/7_d3pila.webp" alt="Group tour at popular tourist destination" loading="lazy">
+            </div>
+            <div class="hero-slide">
+                <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1768117748/8_fwptht.webp" alt="Scenic views from MSS Tours excursion" loading="lazy">
+            </div>
+            <div class="hero-slide">
+                <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1768117739/9_ikarma.webp" alt="Tour participants enjoying travel experience" loading="lazy">
+            </div>
+            <div class="hero-slide">
+                <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1768117756/10_aqfeav.webp" alt="Exploring beautiful destinations with MSS Travels" loading="lazy">
+            </div>
+            <div class="hero-slide">
+                <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1768117740/11_pczhmq.webp" alt="Unforgettable travel moments captured on tour" loading="lazy">
+            </div>
+            <div class="hero-slideshow-overlay"></div>
+            <div class="hero-slideshow-indicators" role="group" aria-label="Slideshow navigation">
+                <span class="hero-indicator active" data-slide="0" role="button" tabindex="0" aria-label="Go to slide 1" aria-current="true"></span>
+                <span class="hero-indicator" data-slide="1" role="button" tabindex="0" aria-label="Go to slide 2"></span>
+                <span class="hero-indicator" data-slide="2" role="button" tabindex="0" aria-label="Go to slide 3"></span>
+                <span class="hero-indicator" data-slide="3" role="button" tabindex="0" aria-label="Go to slide 4"></span>
+                <span class="hero-indicator" data-slide="4" role="button" tabindex="0" aria-label="Go to slide 5"></span>
+                <span class="hero-indicator" data-slide="5" role="button" tabindex="0" aria-label="Go to slide 6"></span>
+                <span class="hero-indicator" data-slide="6" role="button" tabindex="0" aria-label="Go to slide 7"></span>
+                <span class="hero-indicator" data-slide="7" role="button" tabindex="0" aria-label="Go to slide 8"></span>
+                <span class="hero-indicator" data-slide="8" role="button" tabindex="0" aria-label="Go to slide 9"></span>
+                <span class="hero-indicator" data-slide="9" role="button" tabindex="0" aria-label="Go to slide 10"></span>
+                <span class="hero-indicator" data-slide="10" role="button" tabindex="0" aria-label="Go to slide 11"></span>
+            </div>
+        </div>
         <div class="hero-background" role="img" aria-label="Hero background image"></div>
         <div class="hero-particles">
             <div class="particle"></div>
@@ -2793,7 +2926,7 @@
             <div class="service-card fade-in stagger-2">
                 <div class="service-icon">🏝️</div>
                 <h3>Sri Lanka Tours</h3>
-                <p>Explore the breathtaking beauty of Sri Lanka, from pristine beaches to ancient temples and lush tea plantations.</p>
+                <p>Explore the breathtaking beauty of Sri Lanka, from pristine beaches to ancient temples and lush tea plantations. We arrange island wide transportation for all foreigners and help with finding accommodation.</p>
                 <ul class="service-features">
                     <li>Beach paradise getaways</li>
                     <li>Wildlife safari adventures</li>
@@ -3722,6 +3855,61 @@
 
             // Start the slideshow
             startSlideshow();
+        }
+
+        // Hero Section Slideshow
+        const HERO_SLIDESHOW_INTERVAL_MS = 5000;
+        const heroSlideshow = document.getElementById('heroSlideshow');
+        
+        if (heroSlideshow) {
+            const heroSlides = heroSlideshow.querySelectorAll('.hero-slide');
+            const heroIndicators = heroSlideshow.querySelectorAll('.hero-indicator');
+            let currentHeroSlide = 0;
+            let heroSlideshowInterval;
+
+            function showHeroSlide(index) {
+                heroSlides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+                heroIndicators.forEach((indicator, i) => {
+                    indicator.classList.toggle('active', i === index);
+                    indicator.setAttribute('aria-current', i === index ? 'true' : 'false');
+                });
+                currentHeroSlide = index;
+            }
+
+            function nextHeroSlide() {
+                const next = (currentHeroSlide + 1) % heroSlides.length;
+                showHeroSlide(next);
+            }
+
+            function startHeroSlideshow() {
+                heroSlideshowInterval = setInterval(nextHeroSlide, HERO_SLIDESHOW_INTERVAL_MS);
+            }
+
+            function stopHeroSlideshow() {
+                clearInterval(heroSlideshowInterval);
+            }
+
+            // Click and keyboard support for indicators
+            heroIndicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    stopHeroSlideshow();
+                    showHeroSlide(index);
+                    startHeroSlideshow();
+                });
+                indicator.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        stopHeroSlideshow();
+                        showHeroSlide(index);
+                        startHeroSlideshow();
+                    }
+                });
+            });
+
+            // Start the hero slideshow
+            startHeroSlideshow();
         }
     </script>
 </body>
