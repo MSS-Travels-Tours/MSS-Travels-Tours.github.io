@@ -1205,6 +1205,63 @@
             margin: 0;
         }
 
+        /* Cricket Slideshow Styles */
+        .cricket-slideshow {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .cricket-slideshow .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .cricket-slideshow .slide.active {
+            opacity: 1;
+        }
+
+        .cricket-slideshow .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slideshow-indicators {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .slideshow-indicators .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slideshow-indicators .indicator.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: scale(1.2);
+        }
+
+        .slideshow-indicators .indicator:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
         /* About Section */
         #about {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
@@ -2571,10 +2628,11 @@
         <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1768105073/Jaffna_e4itsp.webp" alt="Jaffna" width="1600" height="900" loading="lazy">
         <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1768105079/Ella_xo0wed.webp" alt="Ella" width="1600" height="900" loading="lazy">
         
-        <!-- Cricket Coaching Images -->
-        <img src="/images/cricket-facilities.jpg" alt="" width="1200" height="800" loading="lazy">
-        <img src="/images/cricket-coaching.jpg" alt="" width="1200" height="800" loading="lazy">
-        <img src="/images/cricket-training.jpg" alt="" width="1200" height="800" loading="lazy">
+        <!-- Cricket Coaching Slideshow Images -->
+        <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1768108235/1_dyfyvs.webp" alt="Cricket Coaching Facilities" width="800" height="600" loading="eager">
+        <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1768108238/2_bgvxjx.webp" alt="Professional Cricket Training" width="800" height="600" loading="eager">
+        <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1768108234/3_mirnvs.webp" alt="Cricket Coaching Session" width="800" height="600" loading="eager">
+        <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1768108235/4_rwpsmn.webp" alt="Cricket Training Ground" width="800" height="600" loading="eager">
         
         <!-- Company Images -->
         <img src="/images/logo.png" alt="" width="512" height="512" loading="eager">
@@ -2765,7 +2823,26 @@
         </div>
         <div class="cricket-content">
             <div class="cricket-image-container slide-in-left">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g4' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%231a4d2e;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%232d7a4f;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g4)'/%3E%3Ctext x='50%25' y='45%25' font-family='Arial' font-size='80' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3E🏏%3C/text%3E%3Ctext x='50%25' y='60%25' font-family='Arial' font-size='40' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3ECricket Coaching%3C/text%3E%3C/svg%3E" alt="Cricket Coaching">
+                <div class="cricket-slideshow" id="cricketSlideshow">
+                    <div class="slide active">
+                        <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1768108235/1_dyfyvs.webp" alt="Cricket Coaching Facilities" width="800" height="600" loading="eager">
+                    </div>
+                    <div class="slide">
+                        <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1768108238/2_bgvxjx.webp" alt="Professional Cricket Training" width="800" height="600" loading="lazy">
+                    </div>
+                    <div class="slide">
+                        <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1768108234/3_mirnvs.webp" alt="Cricket Coaching Session" width="800" height="600" loading="lazy">
+                    </div>
+                    <div class="slide">
+                        <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1768108235/4_rwpsmn.webp" alt="Cricket Training Ground" width="800" height="600" loading="lazy">
+                    </div>
+                    <div class="slideshow-indicators">
+                        <span class="indicator active" data-slide="0"></span>
+                        <span class="indicator" data-slide="1"></span>
+                        <span class="indicator" data-slide="2"></span>
+                        <span class="indicator" data-slide="3"></span>
+                    </div>
+                </div>
                 <div class="cricket-badge">Premium Facilities</div>
             </div>
             <div class="cricket-info slide-in-right">
@@ -3340,6 +3417,56 @@
                 closeMobileMenu();
             }
         });
+
+        // Cricket Coaching Slideshow
+        const SLIDESHOW_INTERVAL_MS = 4000;
+        const cricketSlideshow = document.getElementById('cricketSlideshow');
+        
+        if (cricketSlideshow) {
+            const slides = cricketSlideshow.querySelectorAll('.slide');
+            const indicators = cricketSlideshow.querySelectorAll('.indicator');
+            let currentSlide = 0;
+            let slideshowInterval;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+                indicators.forEach((indicator, i) => {
+                    indicator.classList.toggle('active', i === index);
+                });
+                currentSlide = index;
+            }
+
+            function nextSlide() {
+                const next = (currentSlide + 1) % slides.length;
+                showSlide(next);
+            }
+
+            function startSlideshow() {
+                slideshowInterval = setInterval(nextSlide, SLIDESHOW_INTERVAL_MS);
+            }
+
+            function stopSlideshow() {
+                clearInterval(slideshowInterval);
+            }
+
+            // Click on indicators to change slide
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    stopSlideshow();
+                    showSlide(index);
+                    startSlideshow();
+                });
+            });
+
+            // Pause slideshow on hover
+            cricketSlideshow.addEventListener('mouseenter', stopSlideshow);
+            cricketSlideshow.addEventListener('mouseleave', startSlideshow);
+
+            // Start the slideshow
+            startSlideshow();
+        }
     </script>
 </body>
 </html>
