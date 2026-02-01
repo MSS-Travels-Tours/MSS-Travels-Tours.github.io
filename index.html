@@ -257,12 +257,18 @@
         {
           "@type": "ListItem",
           "position": 4,
+          "name": "Tour Packages",
+          "item": "https://mss-travels-tours.github.io/#tour-packages"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
           "name": "Cricket Coaching",
           "item": "https://mss-travels-tours.github.io/#cricket-coaching"
         },
         {
           "@type": "ListItem",
-          "position": 5,
+          "position": 6,
           "name": "Contact",
           "item": "https://mss-travels-tours.github.io/#contact"
         }
@@ -1219,6 +1225,197 @@
             margin-bottom: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+        }
+
+        /* Tour Packages Section */
+        #tour-packages {
+            background: linear-gradient(135deg, #1a4d2e 0%, #0d2818 100%);
+            padding: 6rem 2rem;
+        }
+
+        #tour-packages .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        #tour-packages .section-subtitle {
+            color: var(--accent);
+        }
+
+        #tour-packages .section-title {
+            color: var(--white);
+        }
+
+        #tour-packages .section-description {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .tour-packages-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tour-packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr));
+            gap: 3rem;
+        }
+
+        .tour-package-card {
+            background: var(--white);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .tour-package-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        }
+
+        .tour-package-image {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .tour-package-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .tour-package-card:hover .tour-package-image img {
+            transform: scale(1.1);
+        }
+
+        .tour-package-badge {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .tour-package-content {
+            padding: 2rem;
+        }
+
+        .tour-package-content h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .tour-package-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .tour-package-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .tour-package-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .tour-package-features li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .tour-package-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tour-package-btn {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            min-width: 140px;
+        }
+
+        .tour-package-btn.primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .tour-package-btn.primary:hover {
+            background: #163d25;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(26, 77, 46, 0.3);
+        }
+
+        .tour-package-btn.secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .tour-package-btn.secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            #tour-packages {
+                padding: 4rem 1rem;
+            }
+
+            .tour-packages-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .tour-package-image {
+                height: 220px;
+            }
+
+            .tour-package-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .tour-package-actions {
+                flex-direction: column;
+            }
+
+            .tour-package-btn {
+                width: 100%;
+            }
         }
 
         /* Cricket Coaching Section */
@@ -2778,6 +2975,7 @@
                 <li role="none"><a href="#home" role="menuitem">Home</a></li>
                 <li role="none"><a href="#services" role="menuitem">Services</a></li>
                 <li role="none"><a href="#destinations" role="menuitem">Destinations</a></li>
+                <li role="none"><a href="#tour-packages" role="menuitem">Tour Packages</a></li>
                 <li role="none"><a href="#cricket-coaching" role="menuitem">Cricket Coaching</a></li>
                 <li role="none"><a href="coaching.html" role="menuitem">Elite Coaching</a></li>
                 <li role="none"><a href="#about" role="menuitem">About</a></li>
@@ -3036,6 +3234,61 @@
         </div>
     </section>
 
+    <!-- Tour Packages Section -->
+    <section id="tour-packages" itemscope itemtype="https://schema.org/TouristTrip">
+        <div class="section-header">
+            <div class="section-subtitle">Exclusive Tour Packages</div>
+            <h2 class="section-title" itemprop="name">Choose Your Perfect Package</h2>
+            <p class="section-description" itemprop="description">Explore our specially curated tour packages designed to give you the ultimate Sri Lankan experience with your loved ones.</p>
+        </div>
+        <div class="tour-packages-container">
+            <div class="tour-packages-grid">
+                <div class="tour-package-card fade-in stagger-1" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                    <div class="tour-package-image">
+                        <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1769959309/Family_and_Friend_Tour_jvlabk.jpg" alt="Family and Friend Tour Package - Groups enjoying scenic Sri Lanka destinations" width="600" height="400" loading="lazy">
+                        <span class="tour-package-badge">Popular</span>
+                    </div>
+                    <div class="tour-package-content">
+                        <h3 itemprop="name">Family and Friend Tour</h3>
+                        <p itemprop="description">Create unforgettable memories with your loved ones on our specially curated family and friends tour package across Sri Lanka's most beautiful destinations.</p>
+                        <ul class="tour-package-features">
+                            <li>Customizable itinerary for groups</li>
+                            <li>Family-friendly accommodations</li>
+                            <li>Private transportation & guides</li>
+                            <li>Kid-friendly activities included</li>
+                            <li>Flexible scheduling options</li>
+                        </ul>
+                        <div class="tour-package-actions">
+                            <a href="#contact" class="tour-package-btn primary">Inquire Now</a>
+                            <a href="https://wa.me/94775191817?text=Hi%2C%20I%20am%20interested%20in%20the%20Family%20and%20Friend%20Tour%20package.%20Please%20share%20more%20details." target="_blank" rel="noopener noreferrer" class="tour-package-btn secondary">WhatsApp Us</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tour-package-card fade-in stagger-2" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                    <div class="tour-package-image">
+                        <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1769959308/Island_Wile_Holiday_Package_spb7me.jpg" alt="Island Wide Holiday Package - Comprehensive Sri Lanka tour experience" width="600" height="400" loading="lazy">
+                        <span class="tour-package-badge">Best Value</span>
+                    </div>
+                    <div class="tour-package-content">
+                        <h3 itemprop="name">Island Wide Holiday Package</h3>
+                        <p itemprop="description">Experience the complete island adventure with our comprehensive holiday package covering all major attractions across Sri Lanka from coast to highlands.</p>
+                        <ul class="tour-package-features">
+                            <li>Full island coverage itinerary</li>
+                            <li>Premium hotel accommodations</li>
+                            <li>All transport & entrance fees</li>
+                            <li>Wildlife safaris included</li>
+                            <li>Beach & cultural experiences</li>
+                        </ul>
+                        <div class="tour-package-actions">
+                            <a href="#contact" class="tour-package-btn primary">Inquire Now</a>
+                            <a href="https://wa.me/94775191817?text=Hi%2C%20I%20am%20interested%20in%20the%20Island%20Wide%20Holiday%20Package.%20Please%20share%20more%20details." target="_blank" rel="noopener noreferrer" class="tour-package-btn secondary">WhatsApp Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Cricket Coaching Section -->
     <section id="cricket-coaching" itemscope itemtype="https://schema.org/SportsActivityLocation">
         <div class="section-header">
@@ -3202,6 +3455,8 @@
                             <option value="">Select an option</option>
                             <option value="uk-tour">UK Tour Package</option>
                             <option value="srilanka-tour">Sri Lanka Tour Package</option>
+                            <option value="family-friend-tour">Family and Friend Tour</option>
+                            <option value="island-wide-holiday">Island Wide Holiday Package</option>
                             <option value="cricket-coaching">Cricket Coaching</option>
                             <option value="custom">Custom Package</option>
                             <option value="other">Other Inquiry</option>
@@ -3244,6 +3499,7 @@
                         <li><a href="#home">Home</a></li>
                         <li><a href="#services">Services</a></li>
                         <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#tour-packages">Tour Packages</a></li>
                         <li><a href="#about">About Us</a></li>
                     </ul>
                 </nav>
