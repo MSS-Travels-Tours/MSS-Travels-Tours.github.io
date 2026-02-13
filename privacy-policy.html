@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Primary Meta Tags -->
+    <title>Privacy Policy | MSS Travels and Tours</title>
+    <meta name="title" content="Privacy Policy | MSS Travels and Tours">
+    <meta name="description" content="Privacy policy for MSS Travels and Tours. Learn how we collect, use, and protect your personal information when you use our travel services.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="MSS Travels and Tours">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://mss-travels-tours.github.io/privacy-policy.html">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mss-travels-tours.github.io/privacy-policy.html">
+    <meta property="og:title" content="Privacy Policy | MSS Travels and Tours">
+    <meta property="og:description" content="Privacy policy for MSS Travels and Tours. Learn how we collect, use, and protect your personal information when you use our travel services.">
+    <meta property="og:site_name" content="MSS Travels and Tours">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Privacy Policy | MSS Travels and Tours">
+    <meta name="twitter:description" content="Privacy policy for MSS Travels and Tours.">
+
+    <!-- Mobile Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#1a4d2e">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #1a4d2e;
+            --primary-light: #2d7a4f;
+            --accent: #d4af37;
+            --accent-hover: #c19b2a;
+            --dark: #0f1419;
+            --light: #f8f6f1;
+            --cream: #faf8f3;
+            --text: #2c3e50;
+            --text-light: #5d6d7e;
+            --white: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.08);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.7;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            font-family: 'Playfair Display', serif;
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        .logo-main {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            line-height: 1;
+        }
+
+        .logo-sub {
+            font-size: 0.75rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-top: 0.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent);
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1100;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 2px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .accent-line {
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin: 1.5rem auto 0;
+        }
+
+        /* Main Content */
+        .policy-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .policy-section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 15px var(--shadow);
+        }
+
+        .policy-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .policy-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin: 1.5rem 0 0.8rem;
+        }
+
+        .policy-section p {
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .policy-section ul,
+        .policy-section ol {
+            margin: 0.8rem 0 1rem 1.5rem;
+            color: var(--text);
+        }
+
+        .policy-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .policy-section a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .policy-section a:hover {
+            color: var(--accent);
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: var(--light);
+            border-left: 4px solid var(--accent);
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+
+        /* Contact Card */
+        .contact-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .contact-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .contact-card p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-card a {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .contact-card a:hover {
+            color: var(--white);
+        }
+
+        .last-updated {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 280px;
+                height: 100vh;
+                background: var(--white);
+                flex-direction: column;
+                padding: 5rem 2rem 2rem;
+                gap: 1.5rem;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+                z-index: 1050;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .mobile-menu-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 1040;
+            }
+
+            .mobile-menu-overlay.active {
+                display: block;
+            }
+
+            .page-header {
+                padding: 7rem 1.5rem 3rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .policy-container {
+                padding: 2rem 1rem;
+            }
+
+            .policy-section {
+                padding: 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .social-links a {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .footer-bottom p {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .policy-section {
+                padding: 1.2rem;
+            }
+
+            .contact-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <div class="nav-container">
+            <a href="index.html" class="logo" aria-label="MSS Travels and Tours - Home">
+                <span class="logo-main">MSS</span>
+                <span class="logo-sub">TRAVELS &amp; TOURS</span>
+            </a>
+            <ul class="nav-links" id="nav-links" role="menubar">
+                <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+                <li role="none"><a href="index.html#services" role="menuitem">Services</a></li>
+                <li role="none"><a href="index.html#destinations" role="menuitem">Destinations</a></li>
+                <li role="none"><a href="index.html#about" role="menuitem">About</a></li>
+                <li role="none"><a href="index.html#contact" class="cta-button" role="menuitem">Contact Us</a></li>
+            </ul>
+            <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+            <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="nav-links">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>Privacy Policy</h1>
+        <p>How we collect, use, and protect your personal information.</p>
+        <div class="accent-line"></div>
+    </header>
+
+    <!-- Policy Content -->
+    <main class="policy-container">
+
+        <section class="policy-section">
+            <h2>1. Information We Collect</h2>
+            <p>MSS Travels and Tours collects information necessary to provide you with exceptional travel services. The types of information we may collect include:</p>
+            <h3>Personal Information</h3>
+            <ul>
+                <li><strong>Name</strong> — as it appears on your passport or travel documents</li>
+                <li><strong>Email address</strong> — for booking confirmations and communications</li>
+                <li><strong>Phone number</strong> — for urgent travel updates and support</li>
+                <li><strong>Passport details</strong> — including passport number, nationality, and expiry date, required for travel bookings and visa processing</li>
+                <li><strong>Date of birth</strong> — as required by airlines and accommodation providers</li>
+                <li><strong>Postal address</strong> — for correspondence and document delivery</li>
+            </ul>
+            <h3>Payment Information</h3>
+            <ul>
+                <li>Credit or debit card details (processed securely through our payment providers)</li>
+                <li>Bank account information for refund processing</li>
+                <li>Billing address</li>
+            </ul>
+            <h3>Usage Data</h3>
+            <ul>
+                <li>Browser type and version</li>
+                <li>Pages visited and time spent on our website</li>
+                <li>Referring website or source</li>
+                <li>Device type and operating system</li>
+                <li>IP address</li>
+            </ul>
+        </section>
+
+        <section class="policy-section">
+            <h2>2. How We Use Your Information</h2>
+            <p>We use the information we collect for the following purposes:</p>
+            <ul>
+                <li><strong>Booking processing</strong> — to arrange flights, accommodation, tours, and other travel services on your behalf</li>
+                <li><strong>Communication</strong> — to send booking confirmations, itinerary updates, travel advisories, and respond to your enquiries</li>
+                <li><strong>Service improvement</strong> — to analyse how our website and services are used so we can enhance your experience</li>
+                <li><strong>Marketing</strong> — to send you promotional offers and travel deals, only where you have given your consent</li>
+                <li><strong>Legal compliance</strong> — to meet our obligations under applicable laws and regulations, including tax and immigration requirements</li>
+                <li><strong>Fraud prevention</strong> — to protect against unauthorised transactions and ensure the security of our services</li>
+            </ul>
+        </section>
+
+        <section class="policy-section">
+            <h2>3. Information Sharing</h2>
+            <p>We do not sell your personal information. We may share your data in the following circumstances:</p>
+            <h3>Third-Party Service Providers</h3>
+            <p>To fulfil your travel bookings, we may share relevant personal information with:</p>
+            <ul>
+                <li>Airlines and transport operators</li>
+                <li>Hotels and accommodation providers</li>
+                <li>Tour operators and local guides</li>
+                <li>Visa processing agencies</li>
+                <li>Travel insurance providers</li>
+                <li>Payment processing services</li>
+            </ul>
+            <h3>Legal Requirements</h3>
+            <p>We may disclose your information where required by law, regulation, legal process, or governmental request, including immigration and customs authorities.</p>
+            <h3>With Your Consent</h3>
+            <p>We may share your information with other third parties when you have explicitly given us your consent to do so.</p>
+        </section>
+
+        <section class="policy-section">
+            <h2>4. Data Security</h2>
+            <p>We take the security of your personal information seriously and implement appropriate technical and organisational measures to protect it, including:</p>
+            <ul>
+                <li>Secure encryption for data transmitted through our website</li>
+                <li>Restricted access to personal data on a need-to-know basis</li>
+                <li>Regular review and update of our security practices</li>
+                <li>Secure storage of physical documents containing personal information</li>
+            </ul>
+            <div class="highlight-box">
+                <p><strong>Please note:</strong> While we strive to protect your personal information, no method of transmission over the internet or electronic storage is completely secure. We cannot guarantee absolute security but are committed to maintaining the highest practicable standards.</p>
+            </div>
+        </section>
+
+        <section class="policy-section">
+            <h2>5. Cookies and Tracking Technologies</h2>
+            <p>Our website may use cookies and similar tracking technologies to enhance your browsing experience. These include:</p>
+            <ul>
+                <li><strong>Essential cookies</strong> — required for the website to function properly</li>
+                <li><strong>Analytics cookies</strong> — help us understand how visitors interact with our website</li>
+                <li><strong>Marketing cookies</strong> — used to deliver relevant advertisements and track campaign effectiveness</li>
+            </ul>
+            <p>You can manage your cookie preferences through your browser settings. Disabling certain cookies may affect the functionality of our website.</p>
+        </section>
+
+        <section class="policy-section">
+            <h2>6. Your Rights</h2>
+            <p>You have the following rights regarding your personal information:</p>
+            <ul>
+                <li><strong>Access</strong> — you may request a copy of the personal data we hold about you</li>
+                <li><strong>Correction</strong> — you may request that we correct any inaccurate or incomplete information</li>
+                <li><strong>Deletion</strong> — you may request that we delete your personal data, subject to any legal obligations we are required to fulfil</li>
+                <li><strong>Opt-out of marketing</strong> — you may unsubscribe from marketing communications at any time by clicking the unsubscribe link in our emails or contacting us directly</li>
+                <li><strong>Data portability</strong> — you may request your data in a structured, commonly used format</li>
+                <li><strong>Restriction</strong> — you may request that we restrict the processing of your data in certain circumstances</li>
+            </ul>
+            <p>To exercise any of these rights, please contact us using the details provided at the bottom of this page. We will respond to your request within 30 days.</p>
+        </section>
+
+        <section class="policy-section">
+            <h2>7. Third-Party Links</h2>
+            <p>Our website may contain links to third-party websites, including those of airlines, hotels, and other travel service providers. We are not responsible for the privacy practices or content of these external sites.</p>
+            <p>We encourage you to review the privacy policies of any third-party websites you visit through links on our site.</p>
+        </section>
+
+        <section class="policy-section">
+            <h2>8. Children's Privacy</h2>
+            <p>Our services are not directed at individuals under the age of 16. We do not knowingly collect personal information from children without parental or guardian consent.</p>
+            <p>Where we arrange travel for minors as part of a family booking, the personal information of the child is collected from and managed by the parent or legal guardian. If you believe we have inadvertently collected information from a child without appropriate consent, please contact us and we will promptly delete it.</p>
+        </section>
+
+        <section class="policy-section">
+            <h2>9. International Data Transfers</h2>
+            <p>MSS Travels and Tours operates between the <strong>United Kingdom</strong> and <strong>Sri Lanka</strong>. Your personal information may be transferred to and processed in either country, as well as in other countries where our travel partners and service providers are located.</p>
+            <p>Where data is transferred internationally, we take steps to ensure that appropriate safeguards are in place to protect your information in accordance with applicable data protection laws, including the UK General Data Protection Regulation (UK GDPR) and Sri Lanka's data protection framework.</p>
+        </section>
+
+        <section class="policy-section">
+            <h2>10. Changes to This Policy</h2>
+            <p>MSS Travels and Tours reserves the right to update or modify this privacy policy at any time. Any changes will be posted on this page with an updated effective date.</p>
+            <p>We encourage you to review this policy periodically to stay informed about how we are protecting your information. Continued use of our services after changes are posted constitutes your acceptance of the revised policy.</p>
+        </section>
+
+        <!-- Contact Card -->
+        <div class="contact-card">
+            <h2>Questions About Your Privacy?</h2>
+            <p>If you have any questions or concerns about this privacy policy or how we handle your data, please do not hesitate to contact us.</p>
+            <p style="margin-top: 1rem;">
+                <a href="mailto:maduranga.soyza@gmail.com">maduranga.soyza@gmail.com</a><br>
+                <a href="tel:+94775191817">+94 77 519 1817</a> &nbsp;|&nbsp; <a href="tel:+447310192460">+44 7310 192460</a>
+            </p>
+        </div>
+
+        <p class="last-updated">Last updated: January 2025</p>
+
+    </main>
+
+    <!-- Footer -->
+    <footer itemscope itemtype="https://schema.org/WPFooter">
+        <div class="footer-content">
+            <div class="footer-section" itemscope itemtype="https://schema.org/Organization">
+                <h3 itemprop="name">MSS Travels &amp; Tours</h3>
+                <p itemprop="description">Your trusted partner for unforgettable travel experiences between the UK and Sri Lanka, plus world-class cricket coaching facilities.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/MSSTravelsTours" target="_blank" rel="noopener noreferrer" title="Follow us on Facebook" aria-label="Facebook" itemprop="sameAs">📘</a>
+                    <a href="https://www.instagram.com/MSSTravelsTours" target="_blank" rel="noopener noreferrer" title="Follow us on Instagram" aria-label="Instagram" itemprop="sameAs">📷</a>
+                    <a href="https://twitter.com/MSSTravelsTours" target="_blank" rel="noopener noreferrer" title="Follow us on Twitter" aria-label="Twitter" itemprop="sameAs">🐦</a>
+                    <a href="https://www.linkedin.com/company/mss-travels-tours" target="_blank" rel="noopener noreferrer" title="Connect with us on LinkedIn" aria-label="LinkedIn" itemprop="sameAs">💼</a>
+                    <a href="https://www.youtube.com/@MSSTravelsTours" target="_blank" rel="noopener noreferrer" title="Subscribe to our YouTube channel" aria-label="YouTube" itemprop="sameAs">📹</a>
+                    <a href="https://wa.me/94775191817" target="_blank" rel="noopener noreferrer" title="Chat with us on WhatsApp" aria-label="WhatsApp">💬</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <nav aria-label="Footer Navigation">
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#destinations">Destinations</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <nav aria-label="Legal Navigation">
+                    <ul class="footer-links">
+                        <li><a href="refund-policy.html">Refund Policy</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-section" itemscope itemtype="https://schema.org/ContactPoint">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li itemprop="addressLocality">Colombo, Sri Lanka</li>
+                    <li><a href="tel:+94775191817" itemprop="telephone">+94 77 519 1817</a></li>
+                    <li><a href="tel:+447310192460" itemprop="telephone">+44 7310 192460</a></li>
+                    <li><a href="mailto:maduranga.soyza@gmail.com" itemprop="email">maduranga.soyza@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MSS Travels and Tours. All rights reserved.</p>
+            <p><a href="refund-policy.html">Refund Policy</a> | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-and-conditions.html">Terms &amp; Conditions</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.getElementById('nav-links');
+        const overlay = document.getElementById('mobile-menu-overlay');
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', function () {
+                navLinks.classList.toggle('active');
+                overlay.classList.toggle('active');
+                this.setAttribute('aria-expanded', navLinks.classList.contains('active'));
+            });
+        }
+
+        if (overlay) {
+            overlay.addEventListener('click', function () {
+                navLinks.classList.remove('active');
+                overlay.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            });
+        }
+    </script>
+
+</body>
+</html>
